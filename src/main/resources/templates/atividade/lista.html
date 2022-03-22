@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-ao" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<meta content="width=device-width, initial-scale=1" name="viewport" />
+<link href="materialize/css/materialize.css" rel="stylesheet"
+	type="text/css" />
+<link href="styles.css" rel="stylesheet" type="text/css" />
+<title>Day2DayApp</title>
+</head>
+<body>
+	<header>
+		<nav class="nav-extended light-blue">
+			<div class="nav-wrapper row right">
+				<div class="input-field">
+					<form method="post" th:object="${atividadeDiaria}" action="#">
+						<input class="col m8" th:field="*{data}" type="date" required />
+						<button type="submit" class="btn-flat col m1">
+							<i class="material-icons">send</i>
+						</button>
+					</form>
+				</div>
+			</div>
+			<ul class="row">
+				<li class="col m2 center-align"><a
+					th:href="${#mvc.url('ADC#lista').arg(0, 'anterior').build()}">Anterior</a></li>
+				<li class="col m2 center-align"><a
+					th:href="${#mvc.url('ADC#lista').arg(0, 'hoje').build()}">Hoje</a></li>
+				<li class="col m2 center-align"><a
+					th:href="${#mvc.url('ADC#lista').arg(0, 'posterior').build()}">Posterior</a></li>
+				<li class="col m2 center-align"><a
+					th:href="${#mvc.url('ADC#lista').arg(0, 'tudo').build()}">Todas</a></li>
+			</ul>
+		</nav>
+	</header>
+	<div class="container">
+		<h5>
+			Todas as atividades (<span th:text="${listaDe}"></span>)
+		</h5>
+		<table>
+			<thead>
+				<tr>
+					<th>Nome</th>
+					<th>Data</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="ativ : ${ativs}">
+					<td><a
+						th:href="${#mvc.url('ADC#atividade').arg(0, ativ.id).build()}">
+							<span th:text="${ativ.nome}"></span>
+					</a></td>
+					<td><span th:text="${ativ.data}"></span></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="fixed-action-btn" style="bottom: 45px; right: 45px;">
+		<a href="/nova" class="btn-floating btn-large"><i
+			class="material-icons">add</i></a>
+	</div>
+	<script src="jquery/jquery-3.4.1.js" type="text/javascript"></script>
+	<script src="materialize/js/materialize.js" type="text/javascript"></script>
+</body>
+</html>

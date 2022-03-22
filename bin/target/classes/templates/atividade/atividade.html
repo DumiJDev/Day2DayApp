@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-ao" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta content="width=device-width, initial-scale=1" name="viewport"/>
+    <title>Day2DayApp</title>
+</head>
+<body>
+<header>
+    <nav></nav>
+</header>
+<table>
+    <tbody>
+    <tr>
+        <td>Nome:</td>
+        <td><span th:text="${ativ.nome}"></span></td>
+    </tr>
+    <tr>
+        <td>Data:</td>
+        <td><span th:text="${ativ.data}"></span></td>
+    </tr>
+    <tr>
+        <td><a th:href="${#mvc.url('ADC#atividadeEditar').arg(0, ativ.id).build()}">Editar</a></td>
+        <td><a th:href="${#mvc.url('ADC#atividadeEliminar').arg(0, ativ.id).build()}">Eliminar</a></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

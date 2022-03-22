@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-ao" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <link href="materialize/css/materialize.css" rel="stylesheet"
+          type="text/css"/>
+    <link href="styles.css" rel="stylesheet" type="text/css"/>
+    <title>Day2DayApp</title>
+</head>
+<body>
+<header>
+    <nav class="light-blue">
+        <a href="/voltar">Voltar</a>
+    </nav>
+</header>
+<form class="container" method="post" th:object="${novaAtividade}">
+    <label>Nome
+    <input th:field="*{nome}"
+           type="text" required autocapitalize="words" autofocus/>
+    </label>
+    <div class="row">
+    <label class="col m4 s12">Data
+    <input th:field="*{date}" type="date" required/>
+    </label>
+    <label class="col m4 s12">Hora
+        <input step="1" th:field="*{hora}"
+               type="number" value="0"/>
+    </label>
+    <label class="col m4 s12">Minutos
+        <input step="1" th:field="*{min}"
+               type="number" value="0" required/>
+    </label>
+    </div>
+    <div class="row">
+    <button class="btn col m4 s12 push-m4" type="submit">Adicionar</button>
+    </div>
+</form>
+<script src="jquery/jquery-3.4.1.js"></script>
+<script src="materialize/js/materialize.js"></script>
+</body>
+</html>

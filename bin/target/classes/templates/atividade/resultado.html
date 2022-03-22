@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-ao" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta content="width=device-width, initial-scale=1" name="viewport"/>
+    <title>Day2DayApp</title>
+</head>
+<body>
+<header>
+    <nav></nav>
+</header>
+<div th:if="${ativs.size() > 0}">
+    <h5>Resultados para <strong><span th:text="${busca}"></span></strong></h5>
+    <table>
+        <thead>
+        <tr>
+            <td>Nome</td>
+            <td>Data</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="ativ : ${ativs}">
+            <td><a th:href="${#mvc.url('ADC#atividade').arg(0, ativ.id).build()}"><span
+                    th:text="${ativ.nome}"></span></a></td>
+            <td><span th:text="${ativ.data}"></span></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<div th:if="${ativs.size() < 1}">
+    <h5>Nenhum resultado para <strong><span th:text="${busca}"></span></strong></h5>
+</div>
+</body>
+</html>

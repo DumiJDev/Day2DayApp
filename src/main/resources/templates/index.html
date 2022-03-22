@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-ao" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta content="width=device-width, initial-scale=1" name="viewport"/>
+        <link href="materialize/css/materialize.css" rel="stylesheet" type="text/css"/>
+        <link href="styles.css" rel="stylesheet" type="text/css"/>
+        <title>Day2DayApp</title>
+    </head>
+    <body>
+        <header>
+            <nav class="nav-extended">
+                <div class="nav-wrapper row">
+                    <div class="input-field col m4 right" style="margin-top: 15px">
+                        <form method="post" th:object="${atividadeDiaria}">
+                            <!--label for="busca"><i class="material-icons left">search</i></label--> 
+                            <input id="busca" placeholder="buscar atividades" th:field="*{nome}" type="search" required/>
+                            <!--i class="material-icons">close</i-->
+                        </form>
+                    </div>
+                </div>
+                <ul class="row container">
+                    <li class="col m3 center-align"><a th:href="${#mvc.url('ADC#lista').arg(0, 'anterior').build()}">Anterior</a></li>
+                    <li class="col m3 center-align"><a th:href="${#mvc.url('ADC#lista').arg(0, 'hoje').build()}">Hoje</a></li>
+                    <li class="col m3 center-align"><a th:href="${#mvc.url('ADC#lista').arg(0, 'posterior').build()}">Posterior</a></li>
+                    <li class="col m3 center-align"><a th:href="${#mvc.url('ADC#lista').arg(0, 'tudo').build()}">Todas</a></li>
+                </ul>
+            </nav>
+        </header>
+        <div class="fixed-action-btn" style="bottom: 45px; right: 45px;">
+            <a href="/nova" class="btn-floating btn-large"><i class="material-icons">add</i></a>
+        </div>
+        <script src="jquery/jquery-3.4.1.js"></script>
+        <script src="materialize/js/materialize.js"></script>
+    </body>
+</html>

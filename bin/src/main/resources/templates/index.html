@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt-ao" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Day2DayApp</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a th:href="${#mvc.url('ADC#lista').arg(0, -1).build()}">Ontem</a></li>
+                <li><a th:href="${#mvc.url('ADC#lista').arg(0, 0).build()}">Hoje</a></li>
+                <li><a th:href="${#mvc.url('ADC#lista').arg(0, 1).build()}">Amanhã</a></li>
+            </ul>
+        </nav>
+        <form method="post" th:object="${atividadeDiaria}">
+            <input type="search" th:field="*{nome}" placeholder="buscar atividades"/>
+            <input type="submit" value="buscar"/>
+        </form>
+    </header>
+</body>
+</html>

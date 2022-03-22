@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-ao" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<meta content="width=device-width, initial-scale=1" name="viewport" />
+<link th:href="@{materialize/css/materialize.css}" rel="stylesheet"
+	type="text/css" />
+<title>Day2DayApp</title>
+</head>
+<body>
+	<header>
+		<nav class="nav-extended light-blue">
+			<div class="nav-wrapper row right">
+				<div class="input-field" style="margin-top: 15px">
+					<form method="post" th:action="@{/atividades}"
+						th:object="${atividadeDiaria}">
+						<input class="col m8" th:field="*{date}" type="date" required />
+						<button type="submit" class="btn-flat col m1">
+							<i class="material-icons">send</i>
+						</button>
+					</form>
+				</div>
+			</div>
+			<ul class="row">
+				<li class="col m2 center-align"><a
+					th:href="${#mvc.url('ADC#lista').arg(0, 'anterior').build()}">Anterior</a></li>
+				<li class="col m2 center-align"><a
+					th:href="${#mvc.url('ADC#lista').arg(0, 'hoje').build()}">Hoje</a></li>
+				<li class="col m2 center-align"><a
+					th:href="${#mvc.url('ADC#lista').arg(0, 'posterior').build()}">Posterior</a></li>
+				<li class="col m2 center-align"><a
+					th:href="${#mvc.url('ADC#lista').arg(0, 'tudo').build()}">Todas</a></li>
+			</ul>
+		</nav>
+	</header>
+	<div class="container" th:if="${ativs.size() > 0}">
+		<h5>
+			Resultados para <strong><span th:text="${busca}"></span></strong>
+		</h5>
+		<table>
+			<thead>
+				<tr>
+					<td>Nome</td>
+					<td>Data</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="ativ : ${ativs}">
+					<td><a
+						th:href="${#mvc.url('ADC#atividade').arg(0, ativ.id).build()}"><span
+							th:text="${ativ.nome}"></span></a></td>
+					<td><span th:text="${ativ.tempoSemHora()}"></span></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div th:if="${ativs.size() < 1}">
+		<h5>
+			Nenhum resultado para <strong><span th:text="${busca}"></span></strong>
+		</h5>
+	</div>
+	<div class="fixed-action-btn" style="bottom: 45px; right: 45px;">
+		<a href="/nova" class="btn-floating btn-large"><i
+			class="material-icons">add_circle_outline</i></a>
+	</div>
+	<script src="jquery/jquery-3.4.1.js"></script>
+	<script src="materialize/js/materialize.js"></script>
+</body>
+</html>

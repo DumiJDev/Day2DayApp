@@ -1,0 +1,23 @@
+{
+    "elements": {},
+    "attributes": {
+        "th:if": {
+            "context": "div"
+        },
+        "th:text": {
+            "context": "span"
+        },
+        "th:object": {
+            "context": "form"
+        },
+        "th:field": {
+            "context": "input"
+        },
+        "th:each": {
+            "context": "tr"
+        },
+        "th:href": {
+            "context": "a"
+        }
+    }
+}
